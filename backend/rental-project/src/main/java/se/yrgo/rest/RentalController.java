@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import se.yrgo.domain.Rental;
 import se.yrgo.service.RentalService;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -29,5 +30,31 @@ public class RentalController {
     public ResponseEntity<Rental> createRental(@RequestBody Rental product) {
         Rental createdRental = rentalService.createRental(product);
         return new ResponseEntity<>(createdRental, HttpStatus.CREATED);
+    }
+//http://localhost:8092/rentals/by-customer-and-dates?customerId=2&startDate=2022-01-01T00:00:00&endDate=2023-01-01T00:00:00
+    @GetMapping("/by-customer-and-dates")
+    public ResponseEntity<List<Rental>> getRentalsByCustomerIdBetweenDates(
+            @RequestParam Long customerId,
+            @RequestParam String startDate,
+            @RequestParam String endDate
+    ) {
+        LocalDateTime startDateTime = LocalDateTime.parse(startDate);
+        LocalDateTime endDateTime = LocalDateTime.parse(endDate);
+
+        List<Rental> rentals = rentalService.getRentalsByCustomerIdBetweenDates(customerId, startDateTime, endDateTime);
+        return ResponseEntity.ok(rentals);
+    }
+    //http://localhost:8092/rentals/by-car-and-dates?carId=2&startDate=2022-01-01T00:00:00&endDate=2023-01-01T00:00:00
+    @GetMapping("/by-car-and-dates")
+    public ResponseEntity<List<Rental>> getRentalsByCarIdBetweenDates(
+            @RequestParam Long carId,
+            @RequestParam String startDate,
+            @RequestParam String endDate
+    ) {
+        LocalDateTime startDateTime = LocalDateTime.parse(startDate);
+        LocalDateTime endDateTime = LocalDateTime.parse(endDate);
+
+        List<Rental> rentals = rentalService.getRentalsByCarIdBetweenDates(carId, startDateTime, endDateTime);
+        return ResponseEntity.ok(rentals);
     }
 }
