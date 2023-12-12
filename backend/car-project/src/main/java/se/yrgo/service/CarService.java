@@ -9,4 +9,6 @@ public interface CarService {
     List<Car> getAllCars();
 
     public Car addCar(Car car);
+
+    List<Car> getAllAvailableCars();
 }

@@ -23,4 +23,9 @@ public class CarServiceImpl implements CarService {
     public Car addCar(Car car) {
         return carRepository.save(car);
     }
+
+    @Override
+    public List<Car> getAllAvailableCars() {
+        return carRepository.findAllByAvailability();
+    }
 }

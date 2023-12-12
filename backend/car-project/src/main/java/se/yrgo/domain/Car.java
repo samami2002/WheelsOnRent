@@ -14,7 +14,8 @@ public class Car {
     private String model;
     private int productionYear;
 
-    public boolean isAvailability() {
+    private boolean availability;
+    public boolean isAvailable() {
         return availability;
     }
 
@@ -22,7 +23,6 @@ public class Car {
         this.availability = availability;
     }
 
-    private boolean availability;
 
     public Long getId() {
         return id;

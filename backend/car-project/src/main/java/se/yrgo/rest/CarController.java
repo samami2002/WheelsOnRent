@@ -21,7 +21,7 @@ public class CarController {
     }
 
     @GetMapping
-    public List<Car> getAllProducts() {
+    public List<Car> getAllCars() {
         return carService.getAllCars();
     }
 
@@ -29,5 +29,10 @@ public class CarController {
     public ResponseEntity<Car> addProduct(@RequestBody Car car) {
         Car addedCar = carService.addCar(car);
         return new ResponseEntity<>(addedCar, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/Available")
+    public List<Car> getAllAvailableCar(){
+        return carService.getAllAvailableCars();
     }
 }
