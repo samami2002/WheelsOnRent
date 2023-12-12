@@ -31,7 +31,7 @@ public class CarController {
         return new ResponseEntity<>(addedCar, HttpStatus.CREATED);
     }
 
-    @GetMapping("/Available")
+    @GetMapping("/Available-cars")
     public List<Car> getAllAvailableCar(){
         return carService.getAllAvailableCars(true);
     }

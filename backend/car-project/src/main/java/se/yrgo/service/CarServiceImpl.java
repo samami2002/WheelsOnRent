@@ -25,6 +25,6 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<Car> getAllAvailableCars(boolean availabilty) {
-        return carRepository.findAllByIsAvailable(availabilty);    }
+    public List<Car> getAllAvailableCars(boolean isAvailable) {
+        return carRepository.findAllByIsAvailable(isAvailable);    }
 }

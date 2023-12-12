@@ -19,8 +19,8 @@ public class Car {
         return isAvailable;
     }
 
-    public void setAvailable(boolean available) {
-        this.isAvailable = available;
+    public void setIsAvailable(boolean isAvailable) {
+        this.isAvailable = isAvailable;
     }
 
 
