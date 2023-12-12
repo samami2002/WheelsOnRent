@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface CarRepository extends JpaRepository<Car, Long> {
 
-    List<Car> findAllByAvailability();
+    List<Car> findAllByIsAvailable(Boolean availabilty);
 }

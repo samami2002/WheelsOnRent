@@ -10,5 +10,5 @@ public interface CarService {
 
     public Car addCar(Car car);
 
-    List<Car> getAllAvailableCars();
+    List<Car> getAllAvailableCars(boolean availabilty);
 }

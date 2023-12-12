@@ -33,6 +33,6 @@ public class CarController {
 
     @GetMapping("/Available")
     public List<Car> getAllAvailableCar(){
-        return carService.getAllAvailableCars();
+        return carService.getAllAvailableCars(true);
     }
 }
