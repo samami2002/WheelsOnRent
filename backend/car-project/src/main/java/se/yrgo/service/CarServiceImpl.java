@@ -30,6 +30,6 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public List<Car> getCarsByBrand(String brand) {
-        return carRepository.findCarByBrand(brand);
+        return carRepository.findCarByBrandIgnoreCase(brand);
     }
 }

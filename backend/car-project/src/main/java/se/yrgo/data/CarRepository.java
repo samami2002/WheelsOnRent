@@ -10,5 +10,5 @@ import java.util.List;
 public interface CarRepository extends JpaRepository<Car, Long> {
 
     List<Car> findAllByIsAvailable(Boolean isAvailable);
-    List<Car> findCarByBrand(String brand);
+    List<Car> findCarByBrandIgnoreCase(String brand);
 }
