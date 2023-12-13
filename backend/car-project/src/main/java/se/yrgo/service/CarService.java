@@ -11,4 +11,6 @@ public interface CarService {
     public Car addCar(Car car);
 
     List<Car> getAllAvailableCars(boolean isAvailable);
+
+    List<Car> getCarsByBrand(String brand);
 }

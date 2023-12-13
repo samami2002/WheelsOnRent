@@ -32,7 +32,14 @@ public class CarController {
     }
 
     @GetMapping("/Available-cars")
-    public List<Car> getAllAvailableCar(){
+    public List<Car> getAllAvailableCar() {
         return carService.getAllAvailableCars(true);
     }
+    //http://localhost:8091/cars/by-brand?brand=<brand>
+    @GetMapping("/by-brand")
+    public List<Car> getCarsByBrand(@RequestParam String brand) {
+
+            return carService.getCarsByBrand(brand);
+    }
 }
+
