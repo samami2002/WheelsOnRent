@@ -13,6 +13,6 @@ import java.util.List;
 public interface RentalRepository extends JpaRepository<Rental, Long> {
     List<Rental> findByCustomerIdAndRentalDateTimeBetween(Long customerId, LocalDateTime startDateTime, LocalDateTime endDateTime);
     List<Rental> findByCarIdAndRentalDateTimeBetween(Long carId, LocalDateTime startDateTime, LocalDateTime endDateTime);
-
+    List<Rental> findByCustomerId(Long customerId);
 
 }
