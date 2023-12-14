@@ -11,14 +11,17 @@ import se.yrgo.service.CarService;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/cars")
 public class CarController {
+    private final CarService carService;
     @Autowired
-    private CarService carService;
+    public CarController(CarService carService) {
+        this.carService = carService;
+    }
 
 
-    @CrossOrigin(origins = "*")
     @GetMapping
     public List<Car> getAllCars() {
         return carService.getAllCars();
