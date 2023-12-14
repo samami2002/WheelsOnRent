@@ -11,8 +11,9 @@ public interface RentalService {
 
     public Rental createRental(Rental rental);
 
-
     List<Rental> getRentalsByCustomerIdBetweenDates(Long customerId, LocalDateTime startDateTime, LocalDateTime endDateTime);
 
     List<Rental> getRentalsByCarIdBetweenDates(Long carId, LocalDateTime startDateTime, LocalDateTime endDateTime);
+
+    List<Rental> getRentalsByCustomerId(Long customerId);
 }
