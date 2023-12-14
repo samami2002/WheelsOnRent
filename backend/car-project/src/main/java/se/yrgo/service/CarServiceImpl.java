@@ -1,5 +1,6 @@
 package se.yrgo.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.yrgo.data.CarRepository;
 import se.yrgo.domain.Car;
@@ -9,6 +10,7 @@ import java.util.Optional;
 
 @Service
 public class CarServiceImpl implements CarService {
+    @Autowired
     private final CarRepository carRepository;
 
     public CarServiceImpl(CarRepository carRepository) {
