@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import se.yrgo.domain.Car;
 import se.yrgo.service.CarService;
 
@@ -13,13 +14,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/cars")
 public class CarController {
-    private final CarService carService;
-
     @Autowired
-    public CarController(CarService carService) {
-        this.carService = carService;
-    }
+    private CarService carService;
 
+
+    @CrossOrigin(origins = "*")
     @GetMapping
     public List<Car> getAllCars() {
         return carService.getAllCars();
