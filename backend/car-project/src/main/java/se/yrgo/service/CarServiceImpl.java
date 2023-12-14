@@ -5,6 +5,7 @@ import se.yrgo.data.CarRepository;
 import se.yrgo.domain.Car;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CarServiceImpl implements CarService {
@@ -22,6 +23,23 @@ public class CarServiceImpl implements CarService {
     @Override
     public Car addCar(Car car) {
         return carRepository.save(car);
+    }
+
+    @Override
+    public Car updateCarAvailability(Long carId, boolean newAvailability) {
+        Optional<Car> optionalCar = carRepository.findById(carId);
+        if (optionalCar.isPresent()) {
+            Car car = optionalCar.get();
+            car.setIsAvailable(newAvailability);
+            return carRepository.save(car);
+        } else {
+            throw new RuntimeException("Car not found with ID: " + carId);
+        }
+    }
+
+    @Override
+    public void deleteCar(Long carId) {
+        carRepository.deleteById(carId);
     }
 
     @Override

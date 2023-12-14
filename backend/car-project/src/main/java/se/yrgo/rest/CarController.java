@@ -26,9 +26,24 @@ public class CarController {
     }
 
     @PostMapping
-    public ResponseEntity<Car> addProduct(@RequestBody Car car) {
+    public ResponseEntity<Car> addCar(@RequestBody Car car) {
         Car addedCar = carService.addCar(car);
         return new ResponseEntity<>(addedCar, HttpStatus.CREATED);
+    }
+
+    @PatchMapping("/{id}/availability")
+    public ResponseEntity<Car> updateCarAvailability(
+            @PathVariable Long id,
+            @RequestParam boolean available
+    ) {
+        Car updatedCar = carService.updateCarAvailability(id, available);
+        return new ResponseEntity<>(updatedCar, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteCar(@PathVariable Long id) {
+        carService.deleteCar(id);
+        return new ResponseEntity<>("Car deleted successfully", HttpStatus.OK);
     }
 
     @GetMapping("/Available-cars")
