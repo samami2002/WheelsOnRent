@@ -14,15 +14,15 @@ public class Car {
     private String model;
     private int productionYear;
 
-    public boolean isAvailability() {
-        return availability;
+    private boolean isAvailable;
+    public boolean isAvailable() {
+        return isAvailable;
     }
 
-    public void setAvailability(boolean availability) {
-        this.availability = availability;
+    public void setIsAvailable(boolean isAvailable) {
+        this.isAvailable = isAvailable;
     }
 
-    private boolean availability;
 
     public Long getId() {
         return id;
