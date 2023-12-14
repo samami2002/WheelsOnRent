@@ -1,7 +1,6 @@
 package se.yrgo.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +30,8 @@ public class RentalController {
         Rental createdRental = rentalService.createRental(product);
         return new ResponseEntity<>(createdRental, HttpStatus.CREATED);
     }
-//http://localhost:8092/rentals/by-customer-and-dates?customerId=2&startDate=2022-01-01T00:00:00&endDate=2023-01-01T00:00:00
+
+    //http://localhost:8092/rentals/by-customer-and-dates?customerId=2&startDate=2022-01-01T00:00:00&endDate=2023-01-01T00:00:00
     @GetMapping("/by-customer-and-dates")
     public ResponseEntity<List<Rental>> getRentalsByCustomerIdBetweenDates(
             @RequestParam Long customerId,
@@ -44,6 +44,7 @@ public class RentalController {
         List<Rental> rentals = rentalService.getRentalsByCustomerIdBetweenDates(customerId, startDateTime, endDateTime);
         return ResponseEntity.ok(rentals);
     }
+
     //http://localhost:8092/rentals/by-car-and-dates?carId=2&startDate=2022-01-01T00:00:00&endDate=2023-01-01T00:00:00
     @GetMapping("/by-car-and-dates")
     public ResponseEntity<List<Rental>> getRentalsByCarIdBetweenDates(
@@ -55,6 +56,11 @@ public class RentalController {
         LocalDateTime endDateTime = LocalDateTime.parse(endDate);
 
         List<Rental> rentals = rentalService.getRentalsByCarIdBetweenDates(carId, startDateTime, endDateTime);
+        return ResponseEntity.ok(rentals);
+    }
+     @GetMapping("/alldates-by-customer/{customerId}")
+    public ResponseEntity<List<Rental>> getRentalsByCustomerId(@PathVariable long customerId) {
+        List<Rental> rentals = rentalService.getRentalsByCustomerId(customerId);
         return ResponseEntity.ok(rentals);
     }
 }

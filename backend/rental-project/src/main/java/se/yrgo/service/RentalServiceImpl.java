@@ -30,9 +30,15 @@ public class RentalServiceImpl implements RentalService {
     public List<Rental> getRentalsByCustomerIdBetweenDates(Long customerId, LocalDateTime startDateTime, LocalDateTime endDateTime) {
         return rentalRepository.findByCustomerIdAndRentalDateTimeBetween(customerId, startDateTime, endDateTime);
     }
+
     @Override
     public List<Rental> getRentalsByCarIdBetweenDates(Long carId, LocalDateTime startDateTime, LocalDateTime endDateTime) {
         return rentalRepository.findByCarIdAndRentalDateTimeBetween(carId, startDateTime, endDateTime);
+    }
+
+    @Override
+    public List<Rental> getRentalsByCustomerId(Long customerId) {
+        return rentalRepository.findByCustomerId(customerId);
     }
 
 }
