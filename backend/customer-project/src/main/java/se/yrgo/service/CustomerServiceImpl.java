@@ -17,7 +17,6 @@ public class CustomerServiceImpl implements CustomerService {
         this.customerRepository = customerRepository;
     }
 
-
     @Override
     public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
@@ -28,6 +27,7 @@ public class CustomerServiceImpl implements CustomerService {
         Optional<Customer> optionalCustomer = customerRepository.findById(customerId);
         return optionalCustomer.orElseThrow(() -> new NotFoundException("Customer not found with id: " + customerId));
     }
+
     @Override
     public Customer addAddressToCustomer(Long customerId, Address address) {
         Optional<Customer> optionalCustomer = customerRepository.findById(customerId);

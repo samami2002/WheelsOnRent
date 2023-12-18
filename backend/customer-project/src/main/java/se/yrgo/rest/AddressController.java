@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import se.yrgo.domain.Address;
 import se.yrgo.service.AddressService;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController

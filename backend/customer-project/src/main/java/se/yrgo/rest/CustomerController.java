@@ -1,6 +1,5 @@
 package se.yrgo.rest;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +9,6 @@ import se.yrgo.domain.Customer;
 import se.yrgo.service.CustomerService;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/customers")
@@ -36,8 +34,7 @@ public class CustomerController {
     @PatchMapping("/{id}/address")
     public ResponseEntity<Customer> addAddressToCustomer(
             @PathVariable Long id,
-            @RequestBody Address address
-    ) {
+            @RequestBody Address address) {
         Customer updatedCustomer = customerService.addAddressToCustomer(id, address);
         return new ResponseEntity<>(updatedCustomer, HttpStatus.OK);
     }
