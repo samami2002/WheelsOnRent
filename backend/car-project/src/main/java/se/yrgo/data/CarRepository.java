@@ -1,6 +1,7 @@
 package se.yrgo.data;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import se.yrgo.domain.Car;
 
@@ -14,4 +15,7 @@ public interface CarRepository extends JpaRepository<Car, Long> {
     List<Car> findCarByBrandIgnoreCase(String brand);
     Optional<Car> findById(Long carId);
     void deleteById(Long carId);
+
+    @Query(value = "SELECT DISTINCT model FROM Car")
+    List<String> findDistinctBrand( );
 }

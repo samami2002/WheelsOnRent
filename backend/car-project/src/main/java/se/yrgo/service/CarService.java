@@ -17,4 +17,6 @@ public interface CarService {
     List<Car> getAllAvailableCars(boolean isAvailable);
 
     List<Car> getCarsByBrand(String brand);
+
+    List<String> getAllBrands();
 }

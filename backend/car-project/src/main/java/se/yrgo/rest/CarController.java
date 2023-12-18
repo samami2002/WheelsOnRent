@@ -58,5 +58,10 @@ public class CarController {
 
             return carService.getCarsByBrand(brand);
     }
+    @GetMapping("/get-all-brand")
+    public List<String> getAllBrands()
+    {
+        return carService.getAllBrands();
+    }
 }
 
