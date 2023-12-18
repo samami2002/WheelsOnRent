@@ -19,10 +19,12 @@ public class AddressServiceImpl implements AddressService {
     public List<Address> getAllAddresses() {
         return addressRepository.findAll();
     }
+
     @Override
     public Optional<Address> getAddressById(Long id) {
         return addressRepository.findById(id);
     }
+
     @Override
     public Address addAddress(Address address) {
         return addressRepository.save(address);

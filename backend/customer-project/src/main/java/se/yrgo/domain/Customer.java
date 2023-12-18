@@ -23,6 +23,7 @@ public class Customer {
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getName() {
         return name;
     }
@@ -46,6 +47,7 @@ public class Customer {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
     public String getEmail() {
         return email;
     }
@@ -61,6 +63,7 @@ public class Customer {
     public void setDrivingLicenseNumber(String drivingLicenseNumber) {
         this.drivingLicenseNumber = drivingLicenseNumber;
     }
+
     public Address getAddress() {
         return address;
     }
