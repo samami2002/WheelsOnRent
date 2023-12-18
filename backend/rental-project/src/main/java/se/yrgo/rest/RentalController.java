@@ -10,6 +10,7 @@ import se.yrgo.service.RentalService;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/rentals")
 public class RentalController {
@@ -24,6 +25,7 @@ public class RentalController {
     public List<Rental> getAllRentals() {
         return rentalService.getAllRentals();
     }
+
 
     @PostMapping
     public ResponseEntity<Rental> createRental(@RequestBody Rental product) {
