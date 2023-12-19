@@ -8,8 +8,6 @@ import se.yrgo.domain.Rental;
 import se.yrgo.service.RentalService;
 
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
