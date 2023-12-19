@@ -16,6 +16,10 @@ public interface CarRepository extends JpaRepository<Car, Long> {
     Optional<Car> findById(Long carId);
     void deleteById(Long carId);
 
-    @Query(value = "SELECT DISTINCT model FROM Car")
-    List<String> findDistinctBrand( );
+    @Query(value = "SELECT DISTINCT brand FROM Car")
+    List<String> findDistinctBrands( );
+
+    @Query(value = "SELECT DISTINCT model FROM Car WHERE brand =?1")
+    List<String> findmodel(String brand);
+    //Denna är fel får den inte att funka
 }

@@ -19,4 +19,6 @@ public interface CarService {
     List<Car> getCarsByBrand(String brand);
 
     List<String> getAllBrands();
+
+    List<String> findDistinctModelsByBrand(String brand);
 }

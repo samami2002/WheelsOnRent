@@ -55,6 +55,11 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public List<String> getAllBrands() {
-        return carRepository.findDistinctBrand();
+        return carRepository.findDistinctBrands();
+    }
+
+    @Override
+    public List<String> findDistinctModelsByBrand(String brand) {
+        return carRepository.findmodel(brand);
     }
 }

@@ -58,10 +58,21 @@ public class CarController {
 
             return carService.getCarsByBrand(brand);
     }
-    @GetMapping("/get-all-brand")
+    @GetMapping("/get-all-brands")
     public List<String> getAllBrands()
     {
         return carService.getAllBrands();
     }
+
+
+    //this one does not ignore case
+    @GetMapping("/get-model-by-brand")
+    public List<String> getDistinctModelsByBrand(@RequestParam String brand)
+    {
+        return carService.findDistinctModelsByBrand(brand);
+
+    }
+
+
 }
 
