@@ -10,6 +10,7 @@ import se.yrgo.service.CustomerService;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/customers")
 public class CustomerController {
