@@ -156,7 +156,7 @@ function Booking() {
                 <label>
                     Email:
                     <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
-                </label>
+,                </label>
             </div>
 
             <div>
@@ -210,7 +210,7 @@ function Booking() {
                         dateFormat="MMMM d, yyyy h:mm aa"
                         timeCaption="Time"
                     />
-                </label>
+                </label>                                                                                                                                            
             </div>
             <div>
                 <label>
