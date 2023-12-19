@@ -8,8 +8,11 @@ import se.yrgo.domain.Rental;
 import se.yrgo.service.RentalService;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/rentals")
 public class RentalController {
@@ -26,8 +29,8 @@ public class RentalController {
     }
 
     @PostMapping
-    public ResponseEntity<Rental> createRental(@RequestBody Rental product) {
-        Rental createdRental = rentalService.createRental(product);
+    public ResponseEntity<Rental> createRental(@RequestBody Rental rental) {
+        Rental createdRental = rentalService.createRental(rental);
         return new ResponseEntity<>(createdRental, HttpStatus.CREATED);
     }
 
