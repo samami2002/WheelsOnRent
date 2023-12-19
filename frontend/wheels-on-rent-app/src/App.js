@@ -5,6 +5,8 @@ import Booking from './components/Booking';
 import Navigation from './components/Navigation';
 import CarManagement from './components/CarManagement';
 import BookingConfirmation from './components/BookingConfirmation';
+import Rental from './components/Rental';
+import About from './components/About';
 
 function App() {
     return (
@@ -15,6 +17,8 @@ function App() {
                 <Route path="/booking" element={<Booking/>}/>
                 <Route path="/booking-confirmation" element={<BookingConfirmation/>}/>
                 <Route path="/car-management" element={<CarManagement/>}/>
+                <Route path="/rental" element={<Rental />} />
+                <Route path="/about" element={<About />} />
             </Routes>
         </Router>
     );
