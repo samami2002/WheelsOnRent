@@ -93,6 +93,7 @@ function CarForm({ show, handleClose, handleAddCar }) {
                                     setStationID(''); 
                                 }
                             }} >
+                             <option value="" disabled>Select a Car Rental Station</option>
                             {stations.map(station => (
                                 <option key={station.id} value={station.name}>
                                     {station.name}
