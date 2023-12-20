@@ -29,6 +29,11 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public Optional<Customer> findByNationalIdentificationNumber(String nationalIdentificationNumber) {
+        return customerRepository.findByNationalIdentificationNumber(nationalIdentificationNumber);
+    }
+
+    @Override
     public Customer addAddressToCustomer(Long customerId, Address address) {
         Optional<Customer> optionalCustomer = customerRepository.findById(customerId);
 

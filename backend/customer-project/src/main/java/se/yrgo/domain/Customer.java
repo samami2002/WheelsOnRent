@@ -8,8 +8,10 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @Column(unique = true)
     private String nationalIdentificationNumber;
     private String email;
+    @Column(unique = true)
     private String drivingLicenseNumber;
     private String phoneNumber;
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
