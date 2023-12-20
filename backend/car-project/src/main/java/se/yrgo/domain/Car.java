@@ -1,9 +1,10 @@
 package se.yrgo.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import javax.persistence.*;
 
 @Entity
 public class Car {
@@ -14,7 +15,13 @@ public class Car {
     private String model;
     private int productionYear;
 
+    @ManyToOne
+    @JoinColumn(name = "station_id")
+    private Station station;
+
+
     private boolean isAvailable;
+
     public boolean isAvailable() {
         return isAvailable;
     }
@@ -57,4 +64,11 @@ public class Car {
     }
 
 
+    public Station getStation() {
+        return station;
+    }
+
+    public void setStation(Station station_Id) {
+        this.station = station_Id;
+    }
 }
