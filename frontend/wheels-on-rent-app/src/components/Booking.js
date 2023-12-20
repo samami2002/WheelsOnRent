@@ -7,6 +7,7 @@ import moment from 'moment-timezone';
 import './Booking.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 function Booking() {
     const navigate = useNavigate();
     const [cars, setCars] = useState([]);
@@ -36,6 +37,7 @@ function Booking() {
     const handleBooking = async () => {
         let carResponse, customerResponse, rentalResponse;
 
+
         try {
             if (
                 !selectedCar ||
@@ -52,6 +54,9 @@ function Booking() {
                 !returnDateTime
             ) {
                 alert('Please fill in all fields before booking.');
+                return;
+            } if (moment(returnDateTime).isBefore(rentalDateTime)) {
+                alert('Return date and time cannot be before rental date and time.');
                 return;
             }
 
