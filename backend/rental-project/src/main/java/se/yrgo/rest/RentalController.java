@@ -8,8 +8,6 @@ import se.yrgo.domain.Rental;
 import se.yrgo.service.RentalService;
 
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
@@ -61,7 +59,8 @@ public class RentalController {
         List<Rental> rentals = rentalService.getRentalsByCarIdBetweenDates(carId, startDateTime, endDateTime);
         return ResponseEntity.ok(rentals);
     }
-     @GetMapping("/alldates-by-customer/{customerId}")
+
+    @GetMapping("/alldates-by-customer/{customerId}")
     public ResponseEntity<List<Rental>> getRentalsByCustomerId(@PathVariable long customerId) {
         List<Rental> rentals = rentalService.getRentalsByCustomerId(customerId);
         return ResponseEntity.ok(rentals);

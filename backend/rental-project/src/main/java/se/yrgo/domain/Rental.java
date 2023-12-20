@@ -1,9 +1,6 @@
 package se.yrgo.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -11,10 +8,23 @@ public class Rental {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "insurance_id")
+    private Insurance insurance;
     private Long customerId;
     private Long carId;
     private LocalDateTime rentalDateTime;
     private LocalDateTime returnDateTime;
+
+    public Insurance getInsurance() {
+        return insurance;
+    }
+
+    public void setInsurance(Insurance insurance) {
+        this.insurance = insurance;
+    }
+
+
 
     public Long getId() {
         return id;
