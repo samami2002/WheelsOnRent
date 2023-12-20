@@ -24,6 +24,7 @@ function CarManagement() {
     };
 
     const handleAddCar = (newCar) => {
+        console.log(newCar)
         axios.post('http://localhost:8091/cars', newCar)
             .then(response => {
                 console.log(response.data);
@@ -43,6 +44,8 @@ function CarManagement() {
             .catch(error => {
                 console.error('Error removing car:', error);
             });
+
+            
     };
 
     const handleShowForm = () => setShowForm(true);
