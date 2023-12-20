@@ -8,6 +8,7 @@ function CarForm({ show, handleClose, handleAddCar }) {
     const [productionYear, setProductionYear] = useState('');
     const [stations, setStations] = useState([]);
     const [selectedStation, setSelectedStation] = useState('')
+    const [stationId, setStationID] = useState('')
 
     useEffect(() => {
         axios.get('http://localhost:8091/stations')
@@ -27,7 +28,7 @@ function CarForm({ show, handleClose, handleAddCar }) {
         }
 
         // Call the handleAddCar function with the new car data
-        handleAddCar({ brand, model, productionYear, station: selectedStation });
+        handleAddCar({ brand, model, productionYear, station: {"id":stationId} });
 
         // Clear form fields
         setBrand('');
@@ -74,7 +75,8 @@ function CarForm({ show, handleClose, handleAddCar }) {
                             type="text"
                             placeholder="Enter production year"
                             value={productionYear}
-                            onChange={(e) => setProductionYear(e.target.value)}
+                            onChange={(e) =>  setProductionYear(e.target.value)}
+                        
                         />
                     </Form.Group>
                     <Form.Group controlId="station">
@@ -82,12 +84,20 @@ function CarForm({ show, handleClose, handleAddCar }) {
                         <Form.Control
                             as="select"
                             value={selectedStation}
-                            onChange={(e) => setSelectedStation(e.target.value)} >
+                            onChange={(e) =>{
+                                setSelectedStation(e.target.value);
+                                const selectedStationObject = stations.find(station => station.name === e.target.value);
+                                if (selectedStationObject) {
+                                    setStationID(selectedStationObject.id);
+                                } else {
+                                    setStationID(''); 
+                                }
+                            }} >
                             {stations.map(station => (
                                 <option key={station.id} value={station.name}>
                                     {station.name}
                                 </option>
-                            ))}
+                             ))}
                                 
                            
                            
@@ -107,5 +117,6 @@ function CarForm({ show, handleClose, handleAddCar }) {
         </Modal>
     );
 }
+
 
 export default CarForm;
