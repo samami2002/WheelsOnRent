@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -7,6 +8,7 @@ import './Booking.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Booking() {
+    const navigate = useNavigate();
     const [cars, setCars] = useState([]);
     const [selectedCar, setSelectedCar] = useState('');
     const [name, setName] = useState('');
@@ -87,6 +89,10 @@ function Booking() {
                 returnDateTime: formattedReturnDateTime,
             });
             console.log('Rental created successfully:', rentalResponse.data);
+
+            // Navigate to the confirmation page after a successful booking
+            navigate('/booking-confirmation');
+
         } catch (error) {
             console.error('Error during booking:', error);
 
@@ -111,7 +117,6 @@ function Booking() {
             }
         }
     };
-
 
 
     return (

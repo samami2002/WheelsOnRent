@@ -9,6 +9,7 @@ import se.yrgo.domain.Customer;
 import se.yrgo.service.CustomerService;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -30,6 +31,13 @@ public class CustomerController {
     public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {
         Customer customer = customerService.getCustomerById(id);
         return new ResponseEntity<>(customer, HttpStatus.OK);
+    }
+    @GetMapping("/search")
+    public ResponseEntity<Customer> searchCustomerByNationalId(@RequestParam String nationalIdentificationNumber) {
+        Optional<Customer> customer = customerService.findByNationalIdentificationNumber(nationalIdentificationNumber);
+
+        return customer.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PatchMapping("/{id}/address")
