@@ -1,5 +1,7 @@
 package se.yrgo.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import se.yrgo.data.CustomerRepository;
 import se.yrgo.domain.Address;
@@ -12,6 +14,7 @@ import java.util.Optional;
 @Service
 public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
+    private static final Logger logger = LoggerFactory.getLogger(CustomerServiceImpl.class);
 
     public CustomerServiceImpl(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
@@ -25,7 +28,12 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer getCustomerById(Long customerId) {
         Optional<Customer> optionalCustomer = customerRepository.findById(customerId);
-        return optionalCustomer.orElseThrow(() -> new NotFoundException("Customer not found with id: " + customerId));
+        if (optionalCustomer.isPresent()) {
+            return optionalCustomer.get();
+        } else {
+            logger.error("Customer not found with id: {}", customerId);
+            throw new NotFoundException("Customer not found with id: " + customerId);
+        }
     }
 
     @Override
