@@ -7,7 +7,7 @@ function About() {
 
     return (
         <div className="about-container">
-            <h2>MADE by blood, sweat and CHATGPT-4</h2>
+            <h2>MADE by blood, sweat and ChatGPT</h2>
             
         </div>
     );
