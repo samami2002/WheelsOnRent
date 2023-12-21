@@ -10,11 +10,22 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String street;
     private String city;
     private String postalCode;
     private String country;
+
+    public Address(Long id, String street, String city, String postalCode, String country) {
+        this.id = id;
+        this.street = street;
+        this.city = city;
+        this.postalCode = postalCode;
+        this.country = country;
+    }
+
+    public Address() {
+
+    }
 
     public Long getId() {
         return id;

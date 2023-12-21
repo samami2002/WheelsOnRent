@@ -18,6 +18,15 @@ public class Customer {
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
 
+    public Customer(String name, String nationalIdentificationNumber, String email, String drivingLicenseNumber, String phoneNumber, Address address) {
+        this.name = name;
+        this.nationalIdentificationNumber = nationalIdentificationNumber;
+        this.email = email;
+        this.drivingLicenseNumber = drivingLicenseNumber;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+    }
+
     public Long getId() {
         return id;
     }

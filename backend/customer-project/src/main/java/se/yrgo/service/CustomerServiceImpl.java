@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import se.yrgo.data.CustomerRepository;
 import se.yrgo.domain.Address;
 import se.yrgo.domain.Customer;
+import se.yrgo.exception.AddressAdditionException;
 import se.yrgo.exception.NotFoundException;
 
 import java.util.List;
@@ -48,11 +49,18 @@ public class CustomerServiceImpl implements CustomerService {
         if (optionalCustomer.isPresent()) {
             Customer customer = optionalCustomer.get();
             customer.setAddress(address);
-            return customerRepository.save(customer);
+
+            try {
+                return customerRepository.save(customer);
+            } catch (Exception e) {
+                logger.error("Failed to save customer with address", e);
+                throw new AddressAdditionException("Failed to save customer with address", e);
+            }
         }
 
         throw new NotFoundException("Customer not found with ID: " + customerId);
     }
+
 
     @Override
     public Customer addCustomer(Customer customer) {
